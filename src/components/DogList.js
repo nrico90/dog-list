@@ -8,9 +8,19 @@ class DogsList extends Component {
   componentDidMount() {
     fetch("https://dog.ceo/api/breeds/list/all")
       .then(res => res.json())
-      .then(data => Object.keys(data.message))
+      //   .then(data =>
 
+      .then(data => {
+        const breeds = Object.keys(data.message);
+        this.updateBreeds(breeds); //transform data to an array of strings
+      })
       .catch(console.error);
+  }
+
+  updateBreeds(breeds) {
+    this.setState({
+      dogBreeds: breeds
+    });
   }
 
   render() {
