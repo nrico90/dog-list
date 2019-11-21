@@ -28,6 +28,14 @@ class DogsList extends Component {
       <div className="dogs-list">
         <h1>Dogs List</h1>
         {this.state.dogBreeds === null && "Loading..."}
+        <li>
+          {
+            <ul>
+              {this.state.dogBreeds !== null &&
+                this.state.dogBreeds.map(breed => <li key={breed}>{breed}</li>)}
+            </ul>
+          }
+        </li>
       </div>
     );
   }
